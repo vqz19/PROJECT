@@ -1,0 +1,35 @@
+
+#div-title {
+
+    width: 95%;
+    height: 20%;
+    
+}
+
+#title-additems {
+
+    border-top: 5vh solid transparent;
+    border-bottom: 2vh solid transparent;
+    border-left: 3vh solid transparent;
+    height: 45%;
+}
+
+#margin-title {
+    height: 3px;
+    background-color: #2A2A2A;
+    width: 100%;
+    border: none;
+}
+
+
+#div-passcontent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    grid-column: 1;
+    width: 96%;
+    height: 80%;
+    border: 2px solid blue;
+
+}

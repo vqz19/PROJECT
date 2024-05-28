@@ -1,0 +1,22 @@
+<a href="../pages/import_files.htmlf">
+    <img src="../../static/img/import items.png" class="button-items">
+</a>
+
+
+
+    height: 5vh;
+    background-color: #2A2A2A;
+    border: none;
+    border: 1vh solid #2A2A2A;
+
+
+
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+
+    display: flex;
+grid-column: 2;
+width: 100%;
+height: 100vh;

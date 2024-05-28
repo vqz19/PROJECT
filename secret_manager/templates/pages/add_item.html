@@ -1,0 +1,29 @@
+{% extends "layout/dashboard.html" %}
+
+{% block title %}
+Secret manager - Create Item
+{% endblock title %}
+
+{% block subheader %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/pages/add_item.css') }}">
+{% endblock subheader %}
+
+
+{% block dashboard_content%}
+<div id="div-title">
+    <img src="../../static/img/add item title.png" id="title-additems">
+    <div>
+        <hr id="margin-title">
+    </div> 
+</div>
+<div id="div-passcontent">
+    <form action="{{ url_for('manager_resource.page_create_item') }}" method="post" enctype="multipart/form-data">
+        <input type="text" name="nm">
+        <input type="text" name="user">
+        <input type="text" name="pass">
+        <input type="submit" value="submit">
+    </form>
+</div>
+
+
+{% endblock dashboard_content%}

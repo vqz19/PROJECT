@@ -1,0 +1,49 @@
+{% extends "layout/index.html" %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/layout/dashboard.css') }}">
+    {% block subheader %}
+    {% endblock subheader %}
+{% endblock header %}
+
+{% block body %}
+<div class="dashboard-container">
+    <div class="dashboard-sidebar">        
+        <img src="../../static/img/main logo.png" id="main-logo">
+        <hr class="margin-sidebar">
+        <div class="categories-sidebar">
+            <br><br><br>
+            <form action="{{ url_for('manager_resource.secrets_home') }}" method="get" enctype="multipart/form-data">              
+                <button type="submit" class="button-proof">
+                    <img src="../../static/img/all items.png" class="imgproof" >
+                </button>
+            </form>
+            <br>
+            <form action="{{ url_for('manager_resource.page_import_secrets') }}" method="get" enctype="multipart/form-data">               
+                <button type="submit" class="button-proof">
+                    <img src="../../static/img/import items.png" class="imgproof">
+                </button>
+            </form>
+            <br>
+            <form action="{{ url_for('manager_resource.page_export_secrets') }}" method="get" enctype="multipart/form-data"> 
+                <button type="submit" class="button-proof">
+                    <img src="../../static/img/export items.png" class="imgproof">
+                </button>
+            </form>
+        </div>
+        <div id="add-sidebar">
+            <hr class="margin-sidebar">
+            <form action="{{ url_for('manager_resource.page_add_items') }}" method="get" enctype="multipart/form-data"> 
+                <button type="submit" id="add-button">
+                    <img src="../../static/img/button add.png" id="add-img">
+                </button>
+            </form>       
+        </div>
+    </div>
+    <div class="dashboard-content">
+        {% block dashboard_content %}
+        
+        {% endblock dashboard_content %}
+    </div>
+</div>
+{% endblock body %}

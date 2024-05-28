@@ -1,0 +1,15 @@
+{% extends "layout/dashboard.html" %}
+
+{% block title %}
+Secret Manager - Export
+{% endblock title %}
+
+
+{% block dashboard_content%}
+
+    <form action="{{ url_for('manager_resource.export_secrets') }}" method="post" enctype="multipart/form-data">
+        <label for="file">File</label>
+        <input type="submit" value="Export">
+    </form>
+
+{% endblock dashboard_content%}
