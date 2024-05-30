@@ -1,5 +1,7 @@
 # Secret manager project
 
+#### Gestor de contraseñas, el cual cuenta con funcionalidades como almacenarlas, crearlas, exportalas, importarlas, etc...
+
 ## step creation project (0-step)
 
 Create a virtual enviroment
