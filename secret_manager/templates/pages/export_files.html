@@ -4,12 +4,25 @@
 Secret Manager - Export
 {% endblock title %}
 
+{% block subheader %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/pages/export_files.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+{% endblock subheader %}
+
+
 
 {% block dashboard_content%}
-
-    <form action="{{ url_for('manager_resource.export_secrets') }}" method="post" enctype="multipart/form-data">
-        <label for="file">File</label>
-        <input type="submit" value="Export">
-    </form>
-
+    <div id="div-title">
+        <img src="../../static/img/export item title.png" id="title-allitems">
+        <div>
+            <hr id="margin-title">
+        </div> 
+    </div>
+    <div id="form-cont">
+        <form action="{{ url_for('manager_resource.export_secrets') }}" method="post" enctype="multipart/form-data">
+            <input type="submit" value="Export Passwords" id="button-exp">
+        </form>
+    </div>
 {% endblock dashboard_content%}

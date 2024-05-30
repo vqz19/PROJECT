@@ -1,3 +1,7 @@
+<input type="password" name="" id="" value="{{ item. password }}" class="">
+
+<img src="../../static/img/import items title.png">
+
 <a href="../pages/import_files.htmlf">
     <img src="../../static/img/import items.png" class="button-items">
 </a>

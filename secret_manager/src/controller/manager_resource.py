@@ -2,7 +2,7 @@ import os
 from flask import Blueprint, request, redirect
 from flask import render_template, url_for
 from flask import send_file
-
+from filtercsv import read_csv_file, filter_blanks, add_item
 
 import logging
 logging.basicConfig(format='%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s',
@@ -12,19 +12,17 @@ logging.basicConfig(format='%(asctime)s %(levelname)s %(name)s %(threadName)s : 
 
 logger = logging.getLogger(__name__)
 
+
 MANAGER_RESOURCE = Blueprint("manager_resource", __name__)
 
 
 @MANAGER_RESOURCE.route("/secret-manager",
                         methods=["GET"])
 def secrets_home():
-    return render_template("pages/secret_manager.html")
+    passwords = read_csv_file("file.csv")
+    logger.info(passwords)
+    return render_template("pages/secret_manager.html", passwords = passwords)
 
-
-@MANAGER_RESOURCE.route("/secret-manager2",
-                        methods=["GET"])
-def secrets_home2():
-    return render_template("layout/index.html")
 
 
 @MANAGER_RESOURCE.route("/secret-manager",
@@ -35,15 +33,17 @@ def import_secrets():
     if 'file' in request.files:
         file = request.files['file']
         if file.filename == '' or not file.filename.endswith(".csv"):
-            return redirect(url_for("manager_resource.secrets_home2"))
-        file.save(os.path.join(os.getcwd(), "secret_manager\src\service", "file.csv"))
+            return redirect(url_for("manager_resource.export_secrets"))
+        else:
+            file.save(os.path.join(os.getcwd(), "fileimport.csv"))
+            filter_blanks()
     return redirect(url_for("manager_resource.secrets_home"))
 
 
 @MANAGER_RESOURCE.route("/secret-manager/export_docs",
                         methods=["POST"])
 def export_secrets():
-    return send_file(os.path.join(os.getcwd(), "secret_manager\src\service", "file.csv"), download_name="prueba.csv" ) 
+    return send_file(os.path.join(os.getcwd(),"file.csv"), download_name="PassExport.csv" ) 
 
 
 @MANAGER_RESOURCE.route("/secret-manager/import_docs",
@@ -70,4 +70,10 @@ def page_add_items():
                         methods=["POST"])
 
 def page_create_item():
-    return render_template("pages/add_item.html")
+    print(request.headers)
+    payload = dict(request.form)
+    logger.info(request.files)
+    logger.info(payload)
+    add_item(payload)
+
+    return redirect(url_for("manager_resource.secrets_home"))
