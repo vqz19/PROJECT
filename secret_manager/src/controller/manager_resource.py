@@ -34,9 +34,8 @@ def import_secrets():
         file = request.files['file']
         if file.filename == '' or not file.filename.endswith(".csv"):
             return redirect(url_for("manager_resource.export_secrets"))
-        else:
-            file.save(os.path.join(os.getcwd(), "fileimport.csv"))
-            filter_blanks()
+        file.save(os.path.join(os.getcwd(), "fileimport.csv"))
+        filter_blanks()
     return redirect(url_for("manager_resource.secrets_home"))
 
 
